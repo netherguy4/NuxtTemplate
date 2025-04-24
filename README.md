@@ -2,6 +2,24 @@
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+
+## Included modules and dependencies
+
+#### Modules:
+
+- [Nuxt Eslint](https://nuxt.com/modules/eslint)
+- [Nuxt Icon](https://nuxt.com/modules/icon)
+- [Nuxt Fonts](https://nuxt.com/modules/fonts)
+- [Nuxt Image](https://nuxt.com/modules/image)
+- [Nuxtjs Seo](https://nuxt.com/modules/seo)
+- [Vueuse Nuxt](https://nuxt.com/modules/vueuse)
+
+#### Dependencies:
+
+- GSAP
+- Swiper
+- Sass
+
 ## Setup
 
 Make sure to install dependencies:
