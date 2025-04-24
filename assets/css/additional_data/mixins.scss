@@ -1,0 +1,85 @@
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
+@mixin image-fit() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+@mixin centered() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin absolute-link() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+$maxWidth: 1440;
+@mixin adaptiv-font($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $addMobSize: $addSize + $addSize * 0.7;
+  @media (max-width: calc(767 / 16 * 1em)) {
+    font-size: calc(
+      #{$mobSize + px} + #{$addMobSize} * ((100vw - 360px) / #{$maxWidth})
+    );
+  }
+  @media (min-width: calc(767 / 16 * 1em)) {
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw) / #{$maxWidth}));
+  }
+  @media (min-width: calc(#{$maxWidth} / 16 * 1em)) {
+    font-size: #{$pcSize + px};
+  }
+}
+
+@mixin adaptiv-grid(
+  $min-cols,
+  $max-cols,
+  $cols-min-width,
+  $grid-row-gap: 0px,
+  $grid-column-gap: 0px
+) {
+  --min-cols: #{$min-cols};
+  --max-cols: #{$max-cols};
+  --cols-min-width: #{$cols-min-width};
+  --grid-row-gap: #{$grid-row-gap};
+  --grid-column-gap: #{$grid-column-gap};
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      min(
+        (
+          100% / var(--min-cols) - var(--grid-column-gap) *
+            (var(--min-cols) - 1) / var(--min-cols)
+        ),
+        max(
+          var(--cols-min-width),
+          (
+            100% / var(--max-cols) - var(--grid-column-gap) *
+              (var(--max-cols) - 1) / var(--max-cols)
+          )
+        )
+      ),
+      1fr
+    )
+  );
+  gap: var(--grid-row-gap) var(--grid-column-gap);
+}

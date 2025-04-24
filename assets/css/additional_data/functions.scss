@@ -1,0 +1,24 @@
+@function toem($px) {
+  $value: calc($px / 16 * 1em);
+  @return $value;
+}
+
+@function torem($px) {
+  $value: calc($px / 16 * 1rem);
+  @return $value;
+}
+
+@function percent($px, $from) {
+  $value: calc($px / $from * 100%);
+  @return $value;
+}
+
+@function tovw($px, $from) {
+  $value: calc($px / $from * 100vw);
+  @return $value;
+}
+
+@function em($px, $fz) {
+  $value: calc($px / $fz * 1em);
+  @return $value;
+}
